@@ -13,29 +13,17 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('category', 24);
+            $table->string('category', 64);
             $table->timestamps();
         });
 
-        $data =  array(
-            [
-                'category' => 'Eletrodomésticos',
-            ],
-            [
-                'category' => 'Alimentos e Bebidas',
-            ],
-            [
-                'category' => 'Eletrônicos e Tecnologia',
-            ],
-            [
-                'category' => 'Roupas e Acessórios',
-            ],
-            [
-                'category' => 'Casa e Quintal',
-            ],
-        );
-
-        DB::table('categories')->insert([ $data ]);
+        DB::table('categories')->insert([
+            ['category' => 'Eletrodomésticos'],
+            ['category' => 'Alimentos e Bebidas'],
+            ['category' => 'Eletrônicos e Tecnologia'],
+            ['category' => 'Roupas e Acessórios'],
+            ['category' => 'Casa e Quintal']
+        ]);
 
     }
 

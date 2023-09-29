@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 64);
-            $table->foreign('category_fk')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreignId('category_id')->constrained()->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->float('value', 8, 2);
             $table->date('due_date');
             $table->integer('stock');
