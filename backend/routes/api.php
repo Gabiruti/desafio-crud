@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\ProductsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +30,9 @@ Route::put('/categories/{id}',[CategoriesController::class, 'updateCategory']);
 Route::delete('/categories/{id}',[CategoriesController::class, 'deleteCategory']);
 
 //PRODUCTS
+Route::get('/products',[ProductsController::class, 'getAllProducts']);
+Route::get('/products/{id}',[ProductsController::class, 'getProduct']);
+Route::post('/products', [ProductsController::class, 'createProduct']);
+Route::put('/products/{id}',[ProductsController::class, 'updateProduct']);
+Route::delete('/products/{id}',[ProductsController::class, 'deleteProduct']);
 
