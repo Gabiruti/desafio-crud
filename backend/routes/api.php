@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\CategoriesController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+
+//CATEGORIES
+Route::get('/categories',[CategoriesController::class, 'getAllCategories']);
+Route::get('/categories/{id}',[CategoriesController::class, 'getCatogory']);
+Route::post('/categories', [CategoriesController::class, 'createCategory']);
+Route::put('/categories/{id}',[CategoriesController::class, 'updateCategory']);
+Route::delete('/categories/{id}',[CategoriesController::class, 'deleteCategory']);
+
+//PRODUCTS
+
