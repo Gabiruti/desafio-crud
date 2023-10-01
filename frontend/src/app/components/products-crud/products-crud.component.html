@@ -1,5 +1,5 @@
 <div class="control-wrapper">
-    <button>Adicionar Produto</button>
+    <button (click)="this.showProducts(); this.postProduct();">Adicionar Produto</button>
 </div>
 <div class="table-wrapper">
     <table>
@@ -16,15 +16,26 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td >-</td>
-                <td >-</td>
-                <td >-</td>
-                <td >-</td>
-                <td >-</td>
-                <td >-</td>
-                <td >-</td>
-                <td >-</td>
+            <tr *ngFor="let product of this.allProducts">
+                <td >{{product.name}}</td>
+                <td >{{product.category_id}}</td>
+                <td >R$ {{product.value}}</td>
+                <td >{{product.due_date}}</td>
+                <td >{{product.stock}}</td>
+                <td >{{product.perishable_product == true ? "Sim" : "Não"}}</td>
+                <td >
+                    <img src="/assets/icons/edit-icon.svg"
+                    class="icon"
+                    alt="Editar icon" title="Editar Produto"
+                    (click)="this.updateProduct(product.id)"
+                    >
+                </td>
+                <td >
+                    <img src="/assets/icons/delete-icon.svg"
+                    class="icon"
+                    alt="Delete icon" title="Deletar Produto"
+                    (click)="this.deleteProduct(product.id)">
+                </td>
             </tr>
         </tbody>
     </table>
