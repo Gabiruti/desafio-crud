@@ -1,1 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+:root{
+
+    --gray: #f5f5f5;
+    --gray-25: #e5e8eb;
+    --gray-50: #cbd1d7;
+    --gray-75: #8b96a2;
+
+    --white: #ffffff;
+    
+
+    --blue-25: #528aae;
+    --blue-50: #053b50;
+
+    --red: #ea0909;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    display: block;
+    box-sizing: border-box;
+    background-color: var(--gray);
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    background-color: #f5f5f5;
+    color: #000;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+}
+
+
