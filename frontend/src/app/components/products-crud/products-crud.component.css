@@ -1,0 +1,37 @@
+:host{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.table-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+ td, th {
+    border: 1px solid;
+    border-color: inherit;
+    padding: .5rem 1rem;
+    text-align: center;
+}
+
+tr{
+    border: 1px solid var(--gray-50);
+}
+
+th{
+    background-color: var(--blue-50);
+    color: var(--white);
+    border-color: var(--blue-50);
+    border-width: .3rem 1px;
+    
+  }
+
