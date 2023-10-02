@@ -24,7 +24,16 @@ npm run start
 ```
 
 ## Back-end
-Antes de executar a API, é necessário configurar a conexão com o banco de dados, para isso vá ao arquivo .env e as seguintes linhas, de acordo com as
+Antes de executar a API, é necessário configurar o projeto e a conexão com o banco de dados, 
+para isso crie um ao arquivo .env e copie o conteúdo do arquivo .env.example 
+para ele, após isso execute os seguintes comandos:
+
+```
+composer install
+php artisan key:generate
+```
+
+para configurar a conexão com o banco é necessario mudar as seguintes linhas no arquivo .env, de acordo com as
 configurações do postgres na sua máquina:
 
 ```
