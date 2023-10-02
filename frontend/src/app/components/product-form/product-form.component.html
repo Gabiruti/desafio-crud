@@ -62,15 +62,13 @@
     <div class="selectWrapper">
         <div>
             <label class="selectLabel">Categoria:</label>
-            <select name="select" formControlName="category_id">
-                <option value="1">1</option>
-                <option value="2"> 2 </option>
-                <option value="3">3</option>
+            <select name="select" formControlName="category_id" >
+                <option *ngFor="let category of categories" [value]="category.id">{{category.category}}</option>
               </select>
         </div>
         <div>
             <label class="selectLabel">Produto Perecivel?</label>
-            <select name="select" formControlName="perishable_product">
+            <select title="produto perecivel" name="select" formControlName="perishable_product">
                 <option value="nao" selected>Não</option>
                 <option value="sim">Sim</option>
               </select>

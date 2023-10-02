@@ -49,3 +49,21 @@ th{
     top: 0;
     width: 100vw;
   }
+
+  .control-wrapper button{
+    color: var(--white);
+    border-radius: 5px;
+    border: 0px solid;
+
+    background-color: var(--blue-50);
+    height: 34px;
+
+  }
+
+
+  @media (max-width: 840px) {
+    .table-wrapper{
+        overflow: scroll;
+        justify-content: unset;
+    }
+  }

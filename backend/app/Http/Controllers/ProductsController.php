@@ -11,7 +11,12 @@ class ProductsController extends Controller
     // Display a listing of the resource.
     public function getAllProducts()
     {
-        $products = Products::all();
+        // $products = Products::all();
+
+        $products = Products::select('products.*', 'categories.category as category_name')
+        	->join('categories', 'categories.id', '=', 'products.category_id')
+        	->get();
+        
         return response()->json($products);
     }
 

@@ -18,8 +18,6 @@ export class ProductsCrudComponent implements OnInit  {
   constructor(public massOfData: MassOfDataService){
   }
 
-
-
   ngOnInit(){
     this.fetchProducts()
   }

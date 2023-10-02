@@ -99,6 +99,7 @@ form{
 .selectLabel{
     color: var(--blue-50);
     font-size: 0.8rem;
+    white-space: nowrap;
 }
 
 select{
@@ -124,3 +125,22 @@ select{
     color: var(--red);
     position: relative;
 }
+
+
+@media (max-width: 580px) {
+    .bigWrapper{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .bigWrapperDiv {
+        width: 100%;
+    }
+
+    .bigWrapperDiv input{
+        max-width: 100%;
+    }
+    .selectWrapper div{
+        width: 50%;
+    }
+  }

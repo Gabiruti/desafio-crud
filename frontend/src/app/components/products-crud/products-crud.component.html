@@ -25,8 +25,8 @@
         <tbody>
             <tr *ngFor="let product of this.allProducts">
                 <td >{{product.name}}</td>
-                <td >{{product.category_id}}</td>
-                <td >R$ {{product.value}}</td>
+                <td >{{product.category_name}}</td>
+                <td >{{product.value| currency : 'BRL'}}</td>
                 <td >{{product.due_date}}</td>
                 <td >{{product.stock}}</td>
                 <td >{{product.perishable_product == true ? "Sim" : "Não"}}</td>

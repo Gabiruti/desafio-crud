@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Category } from 'src/app/models/category';
 import { Product, ProductUpdate } from 'src/app/models/product';
 import { MassOfDataService } from 'src/app/services/massOfData/mass-of-data.service';
 
@@ -10,15 +11,20 @@ import { MassOfDataService } from 'src/app/services/massOfData/mass-of-data.serv
 })
 export class ProductFormComponent implements OnInit{
 
+  categories!: Array<Category>
+  
   constructor(
     public massOfData: MassOfDataService) { 
       
     }
 
+    @Input() editValues!: ProductUpdate | null;
+    
+    @Output() submitedEventOnForm = new EventEmitter<boolean>();
+    
 
   ngOnInit(): void {
     if(this.editValues){
-      console.log('AQUI')
       this.productForm.patchValue({
         name: this.editValues.name,
         category_id: this.editValues.category_id,
@@ -27,9 +33,20 @@ export class ProductFormComponent implements OnInit{
         stock: this.editValues.stock, 
         perishable_product: this.editValues.perishable_product == true ? 'sim' : 'nao', 
       });
+    }
+    this.getCategory();
   }
+  
+  getCategory(){
+    this.massOfData.get('/categories').subscribe({
+      next: data => {
+        this.categories = data
+        console.log(data);
+      },
+      error: (e)=> console.log(e),
+    });
+
   }
-    
 
   productForm = new FormGroup({
     name: new FormControl<string>("",[
@@ -57,9 +74,6 @@ export class ProductFormComponent implements OnInit{
     ] )
   });
 
-  @Input() editValues!: ProductUpdate | null;
-
-  @Output() submitedEventOnForm = new EventEmitter<boolean>();
   
 
 
@@ -70,7 +84,6 @@ export class ProductFormComponent implements OnInit{
 
 
   onSubmit():void {
-
     if(!this.productForm.valid) {
       this.productForm.markAllAsTouched();
     }else{
