@@ -1,6 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Product } from 'src/app/models/product';
+import { Product, ProductUpdate } from 'src/app/models/product';
 import { MassOfDataService } from 'src/app/services/massOfData/mass-of-data.service';
 
 @Component({
@@ -8,12 +8,28 @@ import { MassOfDataService } from 'src/app/services/massOfData/mass-of-data.serv
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.css'],
 })
-export class ProductFormComponent{
+export class ProductFormComponent implements OnInit{
 
   constructor(
     public massOfData: MassOfDataService) { 
       
     }
+
+
+  ngOnInit(): void {
+    if(this.editValues){
+      console.log('AQUI')
+      this.productForm.patchValue({
+        name: this.editValues.name,
+        category_id: this.editValues.category_id,
+        value: this.editValues.value, 
+        due_date: this.editValues.due_date,
+        stock: this.editValues.stock, 
+        perishable_product: this.editValues.perishable_product == true ? 'sim' : 'nao', 
+      });
+  }
+  }
+    
 
   productForm = new FormGroup({
     name: new FormControl<string>("",[
@@ -41,6 +57,8 @@ export class ProductFormComponent{
     ] )
   });
 
+  @Input() editValues!: ProductUpdate | null;
+
   @Output() submitedEventOnForm = new EventEmitter<boolean>();
   
 
@@ -65,15 +83,27 @@ export class ProductFormComponent{
         perishable_product: this.productForm.value.perishable_product == 'sim'? true : false
       }
       console.log(product);
-      
-      this.massOfData.post('/products', product).subscribe({
-        next: data => {
-          console.log(data.message);
-          this.hasSubmited();
-        },
-        error: (e)=> console.log(e),
-        complete: () => console.log('CERTO!')
-      });
+
+      if(this.editValues){
+        this.massOfData.put('/products/'+this.editValues.id, product).subscribe({
+          next: data => {
+            console.log(data.message);
+            this.hasSubmited();
+          },
+          error: (e)=> console.log(e),
+          complete: () => console.log('ATUALIZADO!')
+        });
+
+      }else{
+        this.massOfData.post('/products', product).subscribe({
+          next: data => {
+            console.log(data.message);
+            this.hasSubmited();
+          },
+          error: (e)=> console.log(e),
+          complete: () => console.log('CERTO!')
+        });
+      }
     } 
   }
 }

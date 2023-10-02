@@ -1,6 +1,6 @@
 
 <ng-container *ngIf="showModal">
-    <app-modal (submitedEventOnModal) = "catchSubmit($event)"></app-modal>
+    <app-modal [editValues]="this.editProduct"  (submitedEventOnModal) = "catchSubmit($event)"></app-modal>
     <div (click)="toggle()"
          class="overlay"></div>
   </ng-container>
@@ -34,7 +34,7 @@
                     <img src="/assets/icons/edit-icon.svg"
                     class="icon"
                     alt="Editar icon" title="Editar Produto"
-                    (click)="this.updateProduct(product.id)"
+                    (click)="toggle(product)"
                     >
                 </td>
                 <td >

@@ -1,2 +1,2 @@
 <h2>Adicionar Produto</h2>
-<app-product-form (submitedEventOnForm)="catchEventOnModal($event)" ></app-product-form>
+<app-product-form [editValues]="this.editValues" (submitedEventOnForm)="catchEventOnModal($event)" ></app-product-form>
