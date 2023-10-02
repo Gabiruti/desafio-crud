@@ -7,6 +7,7 @@ Crud feito com Angular, Laravel e Postgres
 - [Laravel](https://laravel.com/docs/10.x).
 - [Node.js](https://nodejs.org/en/) - NPM mais especificamente.
 - [postgres](https://www.postgresql.org/download/).
+- [composer](https://getcomposer.org/download/).
 
 
 # Como executar
