@@ -12,7 +12,6 @@ form{
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
     flex-grow: 1;
   }
 
@@ -23,7 +22,8 @@ form{
     display: flex;
     flex-direction: column;
     gap: 2px;
-    padding: 5px; 
+    padding: 5px;
+    min-height: 88px;
 }
 
 .inputWrapper label{
@@ -76,6 +76,7 @@ form{
     color: var(--blue-50);
     border: 0.5px solid var(--blue-50);
     border-radius: 3px;
+    cursor: pointer;
 }
 
 .selectWrapper{
@@ -83,6 +84,7 @@ form{
     flex-direction: row;
     justify-content: space-between;
     gap: 20px;
+    padding: 5px;
     
 }
 
@@ -105,12 +107,20 @@ select{
 
 .bigWrapper{
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     flex-direction: row;
 }
 
 .bigWrapperDiv input{
     max-width: 140px;
     color: var(--blue-50);
+    max-height: 35px;
+}
 
+.error{
+    margin: 0;
+    left: 7px;
+    font-size: 0.8rem;
+    color: var(--red);
+    position: relative;
 }
