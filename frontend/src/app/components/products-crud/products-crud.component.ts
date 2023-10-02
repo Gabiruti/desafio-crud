@@ -11,11 +11,19 @@ export class ProductsCrudComponent implements OnInit  {
   
   allProducts!: Array<Product>;
 
+  showModal: boolean = true;
+
   constructor(public massOfData: MassOfDataService){
   }
 
+
+
   ngOnInit(){
     this.fetchProducts()
+  }
+
+  toggle () {
+    this.showModal = !this.showModal;
   }
 
   fetchProducts(){
@@ -73,4 +81,11 @@ export class ProductsCrudComponent implements OnInit  {
     console.log(this.allProducts)
   }
 
+
+  catchSubmit(event: boolean){
+    if(event == true){
+      console.log('SUBMITED! on crud')
+      this.toggle();
+    }
+  }
 }

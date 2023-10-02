@@ -1,5 +1,12 @@
+
+<ng-container *ngIf="showModal">
+    <app-modal (submitedEventOnModal) = "catchSubmit($event)"></app-modal>
+    <div (click)="toggle()"
+         class="overlay"></div>
+  </ng-container>
+
 <div class="control-wrapper">
-    <button (click)="this.showProducts(); this.postProduct();">Adicionar Produto</button>
+    <button (click)="this.showProducts(); this.postProduct(); toggle();">Adicionar Produto</button>
 </div>
 <div class="table-wrapper">
     <table>
