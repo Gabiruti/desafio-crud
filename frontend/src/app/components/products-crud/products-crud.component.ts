@@ -11,37 +11,25 @@ export class ProductsCrudComponent implements OnInit  {
   
   allProducts!: Array<Product>;
 
+  showModal: boolean = false;
+
   constructor(public massOfData: MassOfDataService){
   }
 
+
+
   ngOnInit(){
     this.fetchProducts()
+  }
+
+  toggle () {
+    this.showModal = !this.showModal;
   }
 
   fetchProducts(){
     this.massOfData.get('/products').subscribe({
       next: data =>  this.allProducts = data,
       error: (e)=> console.log(e)
-    });
-  }
-
-  postProduct(){
-    let product: Product = {
-      name: "PRODUTO FRONT TESTE",
-      category_id: 1,
-      value: 29,
-      due_date: new Date('2023-10-01'),
-      stock: 1,
-      perishable_product: false
-  }
-
-    this.massOfData.post('/products', product).subscribe({
-      next: data => {
-        console.log(data.message);
-        this.ngOnInit();
-      },
-      error: (e)=> console.log(e),
-      complete: () => console.log('CERTO!')
     });
   }
 
@@ -73,4 +61,12 @@ export class ProductsCrudComponent implements OnInit  {
     console.log(this.allProducts)
   }
 
+
+  catchSubmit(event: boolean){
+    if(event == true){
+      console.log('SUBMITED! on crud')
+      this.toggle();
+      this.ngOnInit();
+    }
+  }
 }

@@ -5,7 +5,7 @@ export interface Product {
     value: number;
     due_date: Date;
     stock: number;
-    perishable_product: boolean;
+    perishable_product?: boolean;
 }
 
 export interface ProductUpdate extends Partial<Product> {}

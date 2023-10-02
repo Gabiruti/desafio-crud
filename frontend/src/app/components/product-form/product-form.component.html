@@ -1,0 +1,82 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="inputWrapper">
+        <label  for="name">Nome</label>
+        <input  id="name" type="text" formControlName="name" placeholder="Nome">
+        <div *ngIf="productForm.get('name')?.invalid && (productForm.get('name')?.dirty || productForm.get('name')?.touched)"
+        class="error">
+            <div *ngIf="productForm.get('name')?.errors?.['required']">
+                Campo Obrigatório.
+            </div>
+            <div *ngIf="productForm.get('name')?.errors?.['maxLength']">
+                Máximo 64 caracteres.
+            </div>
+            <div *ngIf="productForm.get('name')?.errors?.['pattern']">
+                Não pode conter apenas espaços.
+            </div>
+        </div>
+    </div>
+
+<div class="bigWrapper">
+    <div class="inputWrapper bigWrapperDiv">
+        <label for="valor">Valor</label>
+        <input id="value" type="number" formControlName="value" placeholder="Valor">
+        <div *ngIf="productForm.get('value')?.invalid && (productForm.get('value')?.dirty || productForm.get('value')?.touched)"
+    class="error">
+            <div *ngIf="productForm.get('value')?.errors?.['required']">
+                Campo Obrigatório.
+            </div>
+            <div *ngIf="productForm.get('value')?.errors?.['max']">
+                Valor Máximo excedido.
+            </div>
+        </div>
+    </div>
+    <div class="inputWrapper bigWrapperDiv">
+        <label for="stock">Estoque</label>
+        <input id="stock" type="number" formControlName="stock" placeholder="Estoque">
+        <div *ngIf="productForm.get('stock')?.invalid && (productForm.get('stock')?.dirty || productForm.get('stock')?.touched)" 
+        class="error">
+            <div *ngIf="productForm.get('stock')?.errors?.['required']">
+                Campo Obrigatório.
+            </div>
+            <div *ngIf="productForm.get('stock')?.errors?.['max']">
+                Valor Máximo excedido.
+            </div>
+            <div *ngIf="productForm.get('stock')?.errors?.['pattern']">
+                Apenas inteiros.
+            </div>
+        </div>
+    </div>
+    
+    <div class="inputWrapper bigWrapperDiv datePicker">
+        <label for="stock">Data</label>
+        <input type="date" formControlName="due_date" id="date">
+        <div *ngIf="productForm.get('due_date')?.invalid && (productForm.get('due_date')?.dirty || productForm.get('due_date')?.touched)" 
+        class="error">
+            <div *ngIf="productForm.get('due_date')?.errors?.['required']">
+                Campo Obrigatório.
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="selectWrapper">
+        <div>
+            <label class="selectLabel">Categoria:</label>
+            <select name="select" formControlName="category_id">
+                <option value="1">1</option>
+                <option value="2"> 2 </option>
+                <option value="3">3</option>
+              </select>
+        </div>
+        <div>
+            <label class="selectLabel">Produto Perecivel?</label>
+            <select name="select" formControlName="perishable_product">
+                <option value="nao" selected>Não</option>
+                <option value="sim">Sim</option>
+              </select>
+        </div>
+        
+    </div>
+
+    <button class="button" type="submit" [disabled]="!productForm.valid" >Submit</button>
+</form>
