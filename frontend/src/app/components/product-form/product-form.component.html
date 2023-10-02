@@ -1,0 +1,42 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="inputWrapper">
+        <label  for="nome">Nome</label>
+        <input  id="name" type="text" formControlName="name" placeholder="Nome">
+    </div>
+
+<div class="bigWrapper">
+    <div class="inputWrapper bigWrapperDiv">
+        <label for="valor">Valor</label>
+        <input id="value" type="text" formControlName="value" placeholder="Valor">
+    </div>
+    <div class="inputWrapper bigWrapperDiv">
+        <label for="stock">Estoque</label>
+        <input id="stock" type="text" formControlName="stock" placeholder="Estoque">
+    </div>
+    <div class="inputWrapper bigWrapperDiv datePicker">
+        <input type="date" formControlName="due_date" id="date">
+    </div>
+</div>
+
+
+    <div class="selectWrapper">
+        <div>
+            <label class="selectLabel">Categoria:</label>
+            <select name="select" formControlName="category_id">
+                <option value="1">1</option>
+                <option value="2"> 2 </option>
+                <option value="3">3</option>
+              </select>
+        </div>
+        <div>
+            <label class="selectLabel">Produto Perecivel?</label>
+            <select name="select" formControlName="perishable_product">
+                <option value="nao" selected>Não</option>
+                <option value="sim">Sim</option>
+              </select>
+        </div>
+        
+    </div>
+
+    <button class="button" type="submit" >Submit</button>
+</form>
