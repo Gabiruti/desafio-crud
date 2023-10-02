@@ -13,6 +13,8 @@ export class ProductsCrudComponent implements OnInit  {
 
   showModal: boolean = false;
 
+  editProduct!: ProductUpdate | null;
+
   constructor(public massOfData: MassOfDataService){
   }
 
@@ -22,9 +24,18 @@ export class ProductsCrudComponent implements OnInit  {
     this.fetchProducts()
   }
 
-  toggle () {
-    this.showModal = !this.showModal;
+  toggle (product?: ProductUpdate) {
+    
+    if(product){
+      console.log(product)
+      this.editProduct = product;
+      this.showModal = !this.showModal;
+    }else{
+      this.editProduct = null;
+      this.showModal = !this.showModal;
+    }
   }
+
 
   fetchProducts(){
     this.massOfData.get('/products').subscribe({
@@ -41,20 +52,6 @@ export class ProductsCrudComponent implements OnInit  {
     },
     error: (e)=> console.log(e),
   });
-  }
-
-  updateProduct(id: number | undefined){
-    let product: ProductUpdate = {
-      name: "PRODUTO FRONT ATUALIZADO",
-  }
-    this.massOfData.put('/products/'+id, product).subscribe({
-      next: data => {
-        console.log(data.message);
-        this.ngOnInit();
-      },
-      error: (e)=> console.log(e),
-      complete: () => console.log('ATUALIZADO!')
-    });
   }
 
   showProducts(){
