@@ -28,7 +28,6 @@ export class ProductsCrudComponent implements OnInit  {
   toggle (product?: ProductUpdate) {
     
     if(product){
-      console.log(product)
       this.editProduct = product;
       this.showModal = !this.showModal;
     }else{
@@ -49,7 +48,6 @@ export class ProductsCrudComponent implements OnInit  {
     this.isLoading = true;
     this.massOfData.delete('/products/'+id).subscribe({
     next: data => {
-      console.log(data.message);
       this.ngOnInit();
     },
     error: (e)=> console.log(e),
@@ -57,14 +55,8 @@ export class ProductsCrudComponent implements OnInit  {
   });
   }
 
-  showProducts(){
-    console.log(this.allProducts)
-  }
-
-
   catchSubmit(event: boolean){
     if(event == true){
-      console.log('SUBMITED! on crud')
       this.toggle();
       this.ngOnInit();
     }

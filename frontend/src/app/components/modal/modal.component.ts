@@ -9,7 +9,6 @@ import { ProductUpdate } from 'src/app/models/product';
 export class ModalComponent implements OnInit {
 
   ngOnInit(): void {
-      console.log('modal aquui: ', this.editValues)
   }
 
   @Input() editValues!: ProductUpdate | null;
@@ -18,7 +17,6 @@ export class ModalComponent implements OnInit {
   catchEventOnModal(event: boolean){
     if (event == true){
       this.submitedEventOnModal.emit(true);
-      console.log('SUBMITED! on modal')
     }
   }
 

@@ -41,7 +41,6 @@ export class ProductFormComponent implements OnInit{
     this.massOfData.get('/categories').subscribe({
       next: data => {
         this.categories = data
-        console.log(data);
       },
       error: (e)=> console.log(e),
     });
@@ -79,7 +78,6 @@ export class ProductFormComponent implements OnInit{
 
   hasSubmited() {
     this.submitedEventOnForm.emit(true)
-    console.log('SUBMITED! on form')
   }
 
 
@@ -100,7 +98,6 @@ export class ProductFormComponent implements OnInit{
       if(this.editValues){
         this.massOfData.put('/products/'+this.editValues.id, product).subscribe({
           next: data => {
-            console.log(data.message);
             this.hasSubmited();
           },
           error: (e)=> console.log(e),
@@ -110,7 +107,6 @@ export class ProductFormComponent implements OnInit{
       }else{
         this.massOfData.post('/products', product).subscribe({
           next: data => {
-            console.log(data.message);
             this.hasSubmited();
           },
           error: (e)=> console.log(e),
