@@ -9,7 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModalComponent } from './components/modal/modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductFormComponent } from './components/product-form/product-form.component';
-import { NgFor } from '@angular/common';
 
 
 @NgModule({
@@ -18,10 +17,10 @@ import { NgFor } from '@angular/common';
     ProductsCrudComponent,
     ModalComponent,
     ProductFormComponent
+    
   ],
   imports: [
     BrowserModule,
-
     AppRoutingModule,
     HttpClientModule,
     RouterModule.forRoot([

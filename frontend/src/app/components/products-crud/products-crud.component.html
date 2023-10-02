@@ -26,22 +26,31 @@
             <tr *ngFor="let product of this.allProducts">
                 <td >{{product.name}}</td>
                 <td >{{product.category_name}}</td>
-                <td >{{product.value| currency : 'BRL'}}</td>
+                <td >{{product.value| currency:"BRL"}}</td>
                 <td >{{product.due_date}}</td>
                 <td >{{product.stock}}</td>
                 <td >{{product.perishable_product == true ? "Sim" : "Não"}}</td>
-                <td >
+                <td >  
                     <img src="/assets/icons/edit-icon.svg"
                     class="icon"
                     alt="Editar icon" title="Editar Produto"
                     (click)="toggle(product)"
                     >
-                </td>
+                    </td>
                 <td >
-                    <img src="/assets/icons/delete-icon.svg"
-                    class="icon"
-                    alt="Delete icon" title="Deletar Produto"
-                    (click)="this.deleteProduct(product.id)">
+                    <ng-template [ngIf]="isLoading == false" [ngIfElse]="loading">
+                        <img src="/assets/icons/delete-icon.svg"
+                        class="icon"
+                        alt="Delete icon" title="Deletar Produto"
+                        (click)="this.deleteProduct(product.id)">
+                    </ng-template>
+                    <ng-template #loading>
+                    <img 
+                     src="/assets/icons/loading.svg"
+                    class="loading-svg"
+                    alt="loading icon" title="Editar Produto"
+                    >
+                    </ng-template>  
                 </td>
             </tr>
         </tbody>

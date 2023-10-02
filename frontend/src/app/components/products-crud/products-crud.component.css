@@ -50,6 +50,7 @@ th{
     width: 100vw;
   }
 
+
   .control-wrapper button{
     color: var(--white);
     border-radius: 5px;
@@ -58,6 +59,12 @@ th{
     background-color: var(--blue-50);
     height: 34px;
 
+  }
+
+  .loading-svg{
+    width: 30px;
+    height: 30px;   
+    display:inline-block;
   }
 
 

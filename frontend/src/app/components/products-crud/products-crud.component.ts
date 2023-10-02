@@ -15,11 +15,14 @@ export class ProductsCrudComponent implements OnInit  {
 
   editProduct!: ProductUpdate | null;
 
+  isLoading: boolean = false;
+
   constructor(public massOfData: MassOfDataService){
   }
 
   ngOnInit(){
     this.fetchProducts()
+    this.isLoading = false;
   }
 
   toggle (product?: ProductUpdate) {
@@ -43,12 +46,14 @@ export class ProductsCrudComponent implements OnInit  {
   }
 
   deleteProduct(id: number | undefined){
+    this.isLoading = true;
     this.massOfData.delete('/products/'+id).subscribe({
     next: data => {
       console.log(data.message);
       this.ngOnInit();
     },
     error: (e)=> console.log(e),
+
   });
   }
 
